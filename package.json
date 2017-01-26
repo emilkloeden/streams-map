@@ -1,0 +1,25 @@
+{
+  "name": "streams-map",
+  "version": "0.0.1",
+  "description": "Apply a function over chunks of a stream",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha test",
+    "test:watch": "npm t -- -w",
+    "cover": "nyc npm t  && nyc report --reporter=text-lcov > codecoverage.lcov && codecov"
+  },
+  "keywords": [
+    "streams",
+    "map"
+  ],
+  "author": "Emil Kloeden <emilkloeden@gmail.com> (https://github.com/emilkloeden/)",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "codecov": "^1.0.1",
+    "mocha": "^3.2.0",
+    "nyc": "^10.1.2",
+    "semantic-release": "^6.3.2",
+    "streamtest": "^1.2.2"
+  }
+}
