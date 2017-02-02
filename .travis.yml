@@ -7,11 +7,13 @@ notifications:
 node_js:
   - '7'
   - '6'
-  - '4'
 before_script:
   - npm prune
+script:
+  - npm run cover
 after_success:
   - npm run semantic-release
+  - npm run report-coverage
 branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
+  only:
+  - master
