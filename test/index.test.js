@@ -1,16 +1,22 @@
 const fs = require('fs')
-const {expect} = require('chai')
+const map = require('../src/index')
 const StreamTest = require('streamtest')
-const map = require('./index')
+const {expect} = require('chai')
+const {join} = require('path')
 
-function upper(str) { return str.toUpperCase() }
+function upper(str) { 
+    return str.toUpperCase() 
+}
 
-describe('streams-map', function() {
-    it('should work with one passed as an argument', function(done) {
-        const readStream = fs.createReadStream('./test-file.txt')
+StreamTest.versions.forEach(version => {
+    describe('streams-map', function() {
+        it(`should map a function over a stream using streams ${version}`, function(done) {
+
+        const readStream = fs.createReadStream(join(__dirname, 'test-file.txt'))
+        
         readStream
             .pipe(map(upper))
-            .pipe(StreamTest['v1'].toText(function(err, text) {
+            .pipe(StreamTest[version].toText(function(err, text) {
                 if (err) {
                     done(err)
                 }
@@ -18,7 +24,8 @@ describe('streams-map', function() {
                     expect(text).to.equal('HELLO WORLD')
                     done()
                 }
-            
-        }))
+
+            }))
+        })
     })
 })

@@ -1,12 +1,15 @@
 {
   "name": "streams-map",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "description": "Apply a function over chunks of a stream",
   "main": "src/index.js",
   "scripts": {
+    "commit": "git-cz",
     "test": "mocha test",
     "test:watch": "npm t -- -w",
-    "cover": "nyc npm t  && nyc report --reporter=text-lcov > codecoverage.lcov && codecov"
+    "cover": "nyc npm t  && nyc report --reporter=text-lcov > codecoverage.lcov",
+    "report-coverage": "codecov",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "keywords": [
     "streams",
@@ -17,9 +20,23 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "codecov": "^1.0.1",
+    "commitizen": "^2.9.5",
+    "cz-conventional-changelog": "^1.2.0",
+    "husky": "^0.13.1",
+    "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "nyc": "^10.1.2",
     "semantic-release": "^6.3.2",
     "streamtest": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emilkloeden/streams-map.git"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
   }
+
 }
